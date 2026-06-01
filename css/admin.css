@@ -1,0 +1,258 @@
+/* Tassaout System - Admin Dashboard Styles */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #3498db;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --light-bg: #ecf0f1;
+    --white: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.admin-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.admin-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.admin-header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Navigation */
+.admin-nav {
+    background-color: var(--white);
+    padding: 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.admin-nav li {
+    margin: 0;
+}
+
+.admin-nav a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.admin-nav a:hover {
+    background-color: var(--light-bg);
+    border-bottom-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+/* Main Content */
+.admin-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+section {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--accent-color), #2980b9);
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table thead {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--light-bg);
+}
+
+table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e67e22;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #d35400;
+}
+
+/* Footer */
+.admin-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .admin-nav ul {
+        flex-direction: column;
+    }
+
+    .admin-nav a {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+
+    .admin-nav a:hover {
+        border-left-color: var(--secondary-color);
+        border-bottom: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    table th, table td {
+        padding: 0.5rem;
+    }
+}
