@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Tassaout System</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>🏢 Tableau de Bord Administrateur</h1>
+            <p>Tassaout System - Alpha Core Nexus & Dana</p>
+        </header>
+
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="#dashboard">📊 Tableau de Bord</a></li>
+                <li><a href="#properties">🏠 Propriétés</a></li>
+                <li><a href="#clients">👥 Clients</a></li>
+                <li><a href="#analytics">📈 Analytique</a></li>
+                <li><a href="#settings">⚙️ Paramètres</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-content">
+            <section id="dashboard" class="dashboard-section">
+                <h2>📊 Statistiques Globales</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Propriétés</h3>
+                        <p class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Clients Actifs</h3>
+                        <p class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Transactions</h3>
+                        <p class="stat-value">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Revenus</h3>
+                        <p class="stat-value">0 DH</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="properties" class="properties-section">
+                <h2>🏠 Gestion des Propriétés</h2>
+                <button class="btn-primary">+ Ajouter une Propriété</button>
+                <table class="properties-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adresse</th>
+                            <th>Type</th>
+                            <th>Prix</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Les données seront chargées ici -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="clients" class="clients-section">
+                <h2>👥 Gestion des Clients</h2>
+                <button class="btn-primary">+ Ajouter un Client</button>
+                <table class="clients-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Les données seront chargées ici -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer class="admin-footer">
+            <p>© 2025 Tassaout System | Powered by Alpha Core Nexus & Dana</p>
+        </footer>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
