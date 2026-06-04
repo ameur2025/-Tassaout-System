@@ -1,0 +1,32 @@
+name: Tassaout Industrial Agent
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  agent-processor:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Command Processor
+        run: |
+          TITLE="${{ github.event.issue.title }}"
+          
+          if [[ "$TITLE" == *"[CLEAN]"* ]]; then
+            echo "جاري تنفيذ أمر التنظيف..."
+            # هنا تضع أمر المسح البرمجي الخاص بك
+            gh issue comment ${{ github.event.issue.number }} --body "تم تنظيف النظام بنجاح."
+            gh issue close ${{ github.event.issue.number }}
+            
+          elif [[ "$TITLE" == *"[BUILD]"* ]]; then
+            echo "جاري تنفيذ أمر البناء..."
+            # هنا تضع أمر البناء البرمجي الخاص بك
+            gh issue comment ${{ github.event.issue.number }} --body "تم بناء المشروع بنجاح."
+            gh issue close ${{ github.event.issue.number }}
+            
+          else
+            gh issue comment ${{ github.event.issue.number }} --body "أمر غير مفهوم. يرجى استخدام [CLEAN] أو [BUILD]."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
