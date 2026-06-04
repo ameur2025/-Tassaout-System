@@ -10,12 +10,17 @@ jobs:
   agent-processor:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Process Command
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TITLE="${{ github.event.issue.title }}"
+          ISSUE_NUM="${{ github.event.issue.number }}"
+          
           if [[ "$TITLE" == *"[CLEAN]"* ]]; then
-            gh issue comment ${{ github.event.issue.number }} --body "Agent opérationnel : Nettoyage en cours..."
-            gh issue close ${{ github.event.issue.number }} --reason "completed"
+            gh issue comment "$ISSUE_NUM" --body "الوكيل الصناعي: تم استلام أمر التنظيف. جاري المعالجة..."
+            gh issue close "$ISSUE_NUM" --reason "completed"
           fi
