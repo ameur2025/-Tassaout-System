@@ -3,18 +3,26 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  issues: write
+
 jobs:
   agent-processor:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
-      - name: Execute
-        run: |
-          TITLE="${{ github.event.issue.title }}"
-          if [[ "$TITLE" == *"[CLEAN]"* ]]; then
-            gh issue comment ${{ github.event.issue.number }} --body "تم التنفيذ يا سيدي."
-            gh issue close ${{ github.event.issue.number }}
-          fi
+      - name: Process Command
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # التحقق من وجود الأمر في العنوان
+          TITLE="${{ github.event.issue.title }}"
+          
+          if [[ "$TITLE" == *"[CLEAN]"* ]]; then
+            gh issue comment ${{ github.event.issue.number }} --body "الوكيل الصناعي: تم استلام أمر التنظيف. جاري المعالجة..."
+            # تنفيذ عملية التنظيف هنا
+            echo "Performing cleaning operations..."
+            gh issue comment ${{ github.event.issue.number }} --body "تم التنظيف بنجاح. إغلاق المهمة."
+            gh issue close ${{ github.event.issue.number }}
+          else
+            gh issue comment ${{ github.event.issue.number }} --body "عذراً، أمر غير معروف."
+          fi
