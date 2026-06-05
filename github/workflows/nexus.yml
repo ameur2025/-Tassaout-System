@@ -1,26 +1,39 @@
-name: Tassaout Official Nexus
+name: Tassaout Autonomous Nexus - بيت الحكمة
 on:
-  workflow_dispatch: # هذا يجعله يعمل يدوياً فقط بضغطة زر
-    inputs:
-      command:
-        description: 'اكتب رقم المهمة (1-7)'
-        required: true
-        default: '7'
+  issues:
+    types: [opened, edited]
 
 jobs:
-  run-nexus:
+  brain:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Execute Logic
+      
+      - name: Nexus Intelligence Processor
         run: |
-          echo "تم استلام الأمر رقم: ${{ github.event.inputs.command }}"
-          # هنا سيتم وضع المنطق الخاص ببيت الحكمة (الرقم 7)
-          echo "بيت الحكمة يستجيب للطلب..." > output/result.txt
-      - name: Save Result
+          # استخراج عنوان الطلب من الـ Issue
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          echo "تم استلام طلب جديد: $ISSUE_TITLE"
+          
+          # إعداد ملف المخرجات
+          mkdir -p output
+          
+          # منطق بيت الحكمة
+          if [[ "$ISSUE_TITLE" == *"7"* ]]; then
+             echo "جاري الدخول إلى بيت الحكمة لتحليل: $ISSUE_TITLE" > output/wisdom.txt
+             # يمكنك إضافة أوامر التنقيب هنا
+          else
+             echo "تم استلام الطلب: $ISSUE_TITLE" > output/status.txt
+          fi
+
+      - name: Commit Results
         run: |
-          git config user.name "Nexus Agent"
-          git config user.email "agent@tassaout.system"
-          git add output/result.txt
-          git commit -m "Nexus Agent: Task ${{ github.event.inputs.command }} completed"
+          git config --global user.name "Nexus Agent"
+          git config --global user.email "agent@tassaout.system"
+          git add output/
+          git commit -m "Nexus Agent: Processed $ISSUE_TITLE" || echo "لا تغييرات"
           git push
