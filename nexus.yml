@@ -1,0 +1,25 @@
+name: Tassaout Nexus Engine
+on: [push]
+
+jobs:
+  industrial-processor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Process Listings
+        run: |
+          # إنشاء مجلد المخرجات إذا لم يكن موجوداً
+          mkdir -p output
+          # معالجة الملفات الموجودة في مجلد listings
+          for file in listings/*.yml; do
+            if [ -f "$file" ]; then
+              echo "تمت معالجة الإعلان بنجاح من: $file" > output/ad_ready.txt
+            fi
+          done
+      - name: Final Commit
+        run: |
+          git config --global user.name "Nexus Agent"
+          git config --global user.email "nexus@bot.com"
+          git add output/
+          git commit -m "Nexus: Generated output" || echo "No changes"
+          git push
