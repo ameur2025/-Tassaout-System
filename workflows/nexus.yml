@@ -1,33 +1,29 @@
- name: Tassaout Nexus Engine
-on:
-  issues:
-    types: [opened]
+name: Tassaout Nexus Engine
+on: 
+  push:
+    paths:
+      - 'listings/*.yml'
 
 jobs:
-  industrial-processor:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    if: contains(github.event.issue.title, '[CREATE_LISTING]')
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Industrial Processing
+      - name: Generate Ad
         run: |
-          mkdir -p listings
           mkdir -p output
-          # تحويل محتوى الإيميل (Issue) إلى ملف بيانات
-          echo "${{ github.event.issue.body }}" > listings/listing_${{ github.event.issue.number }}.yml
-          
-          # استخراج البيانات للصياغة
-          TITLE=$(grep "title:" listings/listing_${{ github.event.issue.number }}.yml | cut -d'"' -f2)
-          PRICE=$(grep "price:" listings/listing_${{ github.event.issue.number }}.yml | cut -d'"' -f2)
-          
-          # إنشاء الإعلان
-          echo "إعلان تساوت: $TITLE - بسعر: $PRICE درهم. اتصل بنا الآن!" > output/ad_${{ github.event.issue.number }}.txt
-          
-      - name: Final Commit
+          rm -f output/*
+          for file in listings/*.yml; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file" .yml)
+              echo "--- إعلان رسمي ---" > "output/${filename}_ad.txt"
+              cat "$file" >> "output/${filename}_ad.txt"
+            fi
+          done
+      - name: Auto-Commit Results
         run: |
-          git config --global user.name "Nexus Agent"
-          git config --global user.email "nexus@tassaout.com"
-          git add .
-          git commit -m "Nexus: Processed issue ${{ github.event.issue.number }}"
+          git config --global user.name "Nexus Bot"
+          git config --global user.email "bot@nexus.com"
+          git add output/
+          git commit -m "Nexus: Automated Processing" || echo "No changes"
           git push
