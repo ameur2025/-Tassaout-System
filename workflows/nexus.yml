@@ -1,0 +1,33 @@
+ name: Tassaout Nexus Engine
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  industrial-processor:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.title, '[CREATE_LISTING]')
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Industrial Processing
+        run: |
+          mkdir -p listings
+          mkdir -p output
+          # تحويل محتوى الإيميل (Issue) إلى ملف بيانات
+          echo "${{ github.event.issue.body }}" > listings/listing_${{ github.event.issue.number }}.yml
+          
+          # استخراج البيانات للصياغة
+          TITLE=$(grep "title:" listings/listing_${{ github.event.issue.number }}.yml | cut -d'"' -f2)
+          PRICE=$(grep "price:" listings/listing_${{ github.event.issue.number }}.yml | cut -d'"' -f2)
+          
+          # إنشاء الإعلان
+          echo "إعلان تساوت: $TITLE - بسعر: $PRICE درهم. اتصل بنا الآن!" > output/ad_${{ github.event.issue.number }}.txt
+          
+      - name: Final Commit
+        run: |
+          git config --global user.name "Nexus Agent"
+          git config --global user.email "nexus@tassaout.com"
+          git add .
+          git commit -m "Nexus: Processed issue ${{ github.event.issue.number }}"
+          git push
