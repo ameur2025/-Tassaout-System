@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     permissions:
       contents: write
     steps:
@@ -17,15 +16,24 @@ jobs:
       
       - name: DANA Intelligence Execution
         run: |
-          # DANA يقوم بالقراءة والتحليل
-          REQUEST=$(cat User.txt)
-          mkdir -p output
-          echo "DANA: تم معالجة طلب المشرف العام عامر: $REQUEST" > output/status.txt
+          # 1. قراءة أمر المشرف العام
+          ORDER=$(cat User.txt)
           
-      - name: Commit Action
+          # 2. قراءة محتوى ملف المرجع (Créer un gems)
+          CONTENT=$(cat "Créer un gems")
+          
+          # 3. معالجة الطلب (دمج الأمر مع المحتوى)
+          mkdir -p output
+          echo "DANA يُنفذ الأمر: $ORDER" > output/status.txt
+          echo "--- المرجع المستخدم ---" >> output/status.txt
+          echo "$CONTENT" >> output/status.txt
+          echo "-----------------------" >> output/status.txt
+          echo "النتيجة: تم دمج المرجع في العملية بنجاح." >> output/status.txt
+          
+      - name: Finalizing Commit
         run: |
           git config user.name "DANA - System Writer"
           git config user.email "dana@tassaout.system"
           git add output/status.txt
-          git commit -m "DANA: Task Completed"
+          git commit -m "DANA: Executed order using references"
           git push
