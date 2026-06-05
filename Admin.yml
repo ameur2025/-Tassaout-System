@@ -1,0 +1,30 @@
+name: Admin System
+on:
+  push:
+    paths:
+      - 'User.txt'  # البوت يراقب هذا الملف فقط
+
+jobs:
+  Manager:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Process User Request
+        run: |
+          REQUEST=$(cat User.txt)
+          echo "تم استلام الطلب من المالك: $REQUEST"
+          
+          # هنا "المدير" يقرر ماذا يفعل
+          mkdir -p output
+          echo "المدير قام بمعالجة: $REQUEST" > output/status.txt
+          
+      - name: Commit Action
+        run: |
+          git config user.name "System Manager"
+          git config user.email "manager@tassaout.system"
+          git add output/status.txt
+          git commit -m "Admin: Request Processed"
+          git push
