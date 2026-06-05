@@ -1,56 +1,16 @@
-name: Tassaout Nexus Engine - بيت الحكمة
-on: [push]
-permissions:
-  contents: write
+name: Tassaout Command Center
+on:
+  push:
+    paths:
+      - 'COMMAND.txt' # البوت لا يتحرك إلا إذا لمست هذا الملف!
 
 jobs:
-  nexus_agent:
+  execute:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Nexus Intelligence Processor
+      - name: Process Order
         run: |
-          # قراءة الرقم من ملف command.txt
-          CMD=$(cat command.txt 2>/dev/null 2>&1 && cat command.txt || echo "0")
-          echo "Executing Command: $CMD"
-          
-          # بيت الحكمة (الرقم 7) يقوم بتحليل الطلبات
-          case $CMD in
-            1)
-              echo "النمط 1: جاري تنسيق الإعلانات بالخط الأزرق والأصفر..."
-              # هنا ستوضع أوامر التنسيق (HTML/CSS)
-              ;;
-            2)
-              echo "النمط 2: التنقيب الجغرافي عن العقارات في قلعة السراغنة..."
-              grep -r "قلعة السراغنة" listings/ > output/filtered_data.txt
-              ;;
-            3)
-              echo "النمط 3: تفعيل نظام التنبيهات الذكي..."
-              ;;
-            4)
-              echo "النمط 4: تصنيف المحتوى (عقاري/تجاري/ثقافي)..."
-              ;;
-            5)
-              echo "النمط 5: توليد ملخص العروض الشامل..."
-              ;;
-            6)
-              echo "النمط 6: جلب سجل طلبات الزبناء..."
-              cp listings/inbox/* output/customer_report.txt 2>/dev/null || echo "لا طلبات جديدة" > output/customer_report.txt
-              ;;
-            7)
-              echo "النمط 7: دخول بيت الحكمة - تحليل عميق..."
-              echo "الوكيل الصناعي يقوم بتحليل البيانات لاتخاذ قرارات استراتيجية..." > output/wisdom.txt
-              ;;
-            *)
-              echo "الوكيل في حالة انتظار..."
-              ;;
-          esac
-
-      - name: Commit Results
-        run: |
-          git config --global user.name "Nexus Agent"
-          git config --global user.email "agent@tassaout.system"
-          git add output/
-          git commit -m "Nexus Agent: Task $CMD Completed" || echo "No changes to commit"
-          git push
+          echo "جاري تنفيذ الأمر من بيت الحكمة..."
+          cat COMMAND.txt > output/log.txt
+          # هنا تضع الأوامر التي تريدها
