@@ -1,0 +1,31 @@
+name: DANA - System Writer
+on:
+  push:
+    paths:
+      - 'User.txt'
+
+jobs:
+  DANA_Process:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: DANA Intelligence Execution
+        run: |
+          # DANA يقوم بالقراءة والتحليل
+          REQUEST=$(cat User.txt)
+          mkdir -p output
+          echo "DANA: تم معالجة طلب المشرف العام عامر: $REQUEST" > output/status.txt
+          
+      - name: Commit Action
+        run: |
+          git config user.name "DANA - System Writer"
+          git config user.email "dana@tassaout.system"
+          git add output/status.txt
+          git commit -m "DANA: Task Completed"
+          git push
