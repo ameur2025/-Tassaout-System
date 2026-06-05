@@ -18,22 +18,21 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 1. قراءة الدستور من ملف المدير
-          echo "المدير يقرأ الدستور..."
-          cat manager_core.yml
-          
-          # 2. تحديد المتغيرات
           TITLE="${{ github.event.issue.title }}"
           ISSUE_NUM="${{ github.event.issue.number }}"
           
-          # 3. بروتوكول التعيين الذاتي (إنشاء Gems)
+          # 1. بروتوكول إنشاء المساعدين (Gems)
           if [[ "$TITLE" == *"[CREATE_GEM]"* ]]; then
             GEM_NAME=$(echo $TITLE | cut -d':' -f2)
             mkdir -p gems/$GEM_NAME
-            # إضافة ملف تعليمات بدائي للـ Gem الجديد
             echo "Role: Assistant for $GEM_NAME" > gems/$GEM_NAME/instructions.md
+            gh issue comment $ISSUE_NUM --body "Manager: Gem ($GEM_NAME) created successfully."
+            gh issue close $ISSUE_NUM
             
-            # تأكيد الإنجاز
-            gh issue comment $ISSUE_NUM --body "المدير: تم إنشاء الـ Gem المسمى ($GEM_NAME) بنجاح. أنا الآن المسؤول عن توجيهه."
+          # 2. بروتوكول التنظيف الشامل
+          elif [[ "$TITLE" == *"[CLEAN_ALL]"* ]]; then
+            # إغلاق جميع الـ Issues المفتوحة عدا الحالية
+            gh issue list --state open --json number -q '.[].number' | grep -v "$ISSUE_NUM" | xargs -I {} gh issue close {} --comment "Manager: Office cleaned."
+            gh issue comment $ISSUE_NUM --body "Manager: Office is now clean and organized."
             gh issue close $ISSUE_NUM
           fi
