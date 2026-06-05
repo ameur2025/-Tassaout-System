@@ -1,16 +1,26 @@
-name: Tassaout Command Center
+name: Tassaout Official Nexus
 on:
-  push:
-    paths:
-      - 'COMMAND.txt' # البوت لا يتحرك إلا إذا لمست هذا الملف!
+  workflow_dispatch: # هذا يجعله يعمل يدوياً فقط بضغطة زر
+    inputs:
+      command:
+        description: 'اكتب رقم المهمة (1-7)'
+        required: true
+        default: '7'
 
 jobs:
-  execute:
+  run-nexus:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Process Order
+      - name: Execute Logic
         run: |
-          echo "جاري تنفيذ الأمر من بيت الحكمة..."
-          cat COMMAND.txt > output/log.txt
-          # هنا تضع الأوامر التي تريدها
+          echo "تم استلام الأمر رقم: ${{ github.event.inputs.command }}"
+          # هنا سيتم وضع المنطق الخاص ببيت الحكمة (الرقم 7)
+          echo "بيت الحكمة يستجيب للطلب..." > output/result.txt
+      - name: Save Result
+        run: |
+          git config user.name "Nexus Agent"
+          git config user.email "agent@tassaout.system"
+          git add output/result.txt
+          git commit -m "Nexus Agent: Task ${{ github.event.inputs.command }} completed"
+          git push
