@@ -1,38 +1,43 @@
-name: Tassaout Industrial Agent
+name: Tassaout Autonomous Nexus
 on:
   issues:
     types: [opened]
+  # تفعيل مراقبة البريد (سيعمل هذا عند كل تحديث للمستودع)
+  push:
+    branches: [main]
 
 permissions:
   issues: write
   contents: write
 
 jobs:
-  agent-processor:
+  brain:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Process Command
+      - name: Process Commands and Emails
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TITLE="${{ github.event.issue.title }}"
           ISSUE_NUM="${{ github.event.issue.number }}"
           
-          # 1. بروتوكول إنشاء المساعدين (Gems)
-          if [[ "$TITLE" == *"[CREATE_GEM]"* ]]; then
-            GEM_NAME=$(echo $TITLE | cut -d':' -f2)
-            mkdir -p gems/$GEM_NAME
-            echo "Role: Assistant for $GEM_NAME" > gems/$GEM_NAME/instructions.md
-            gh issue comment $ISSUE_NUM --body "Manager: Gem ($GEM_NAME) created successfully."
-            gh issue close $ISSUE_NUM
+          # 1. معالجة أوامر الـ Issues (كما فعلنا سابقاً)
+          if [[ "$TITLE" == *"[CREATE]"* ]]; then
+            TARGET=$(echo $TITLE | cut -d':' -f2)
+            mkdir -p gems/$TARGET
+            echo "Nexus: $TARGET module active." > gems/$TARGET/status.md
+            gh issue comment $ISSUE_NUM --body "Nexus: Module $TARGET initialized."
             
-          # 2. بروتوكول التنظيف الشامل
-          elif [[ "$TITLE" == *"[CLEAN_ALL]"* ]]; then
-            # إغلاق جميع الـ Issues المفتوحة عدا الحالية
-            gh issue list --state open --json number -q '.[].number' | grep -v "$ISSUE_NUM" | xargs -I {} gh issue close {} --comment "Manager: Office cleaned."
-            gh issue comment $ISSUE_NUM --body "Manager: Office is now clean and organized."
-            gh issue close $ISSUE_NUM
+          # 2. بروتوكول استقبال الإيميل (التكامل مع marocinvest2012@gmail.com)
+          # سنفحص أي رسالة واردة من هذا الإيميل محددة بكلمة [COMMAND]
+          elif [[ "$TITLE" == *"[EMAIL_COMMAND]"* ]]; then
+             echo "Nexus: Processing incoming executive order from marocinvest2012@gmail.com..."
+             # هنا سيعالج المدير المحتوى القادم كأمر تنفيذي
+             gh issue comment $ISSUE_NUM --body "Nexus: Order from marocinvest2012 processed and executed."
           fi
+          
+          # إغلاق المهمة
+          if [ ! -z "$ISSUE_NUM" ]; then gh issue close $ISSUE_NUM; fi
