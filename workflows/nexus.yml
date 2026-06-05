@@ -1,29 +1,32 @@
 name: Tassaout Nexus Engine
-on: 
-  push:
-    paths:
-      - 'listings/*.yml'
+on: [push]
+permissions:
+  contents: write
 
 jobs:
-  build-and-deploy:
+  processor:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate Ad
+      
+      - name: Smart Update
         run: |
+          # التأكد من وجود المجلد
           mkdir -p output
-          rm -f output/*
+          
+          # استبدال الإعلان القديم (Overwrite)
           for file in listings/*.yml; do
             if [ -f "$file" ]; then
-              filename=$(basename "$file" .yml)
-              echo "--- إعلان رسمي ---" > "output/${filename}_ad.txt"
-              cat "$file" >> "output/${filename}_ad.txt"
+              echo "--- تحديث الإعلان ---" > output/ad_ready.txt
+              cat "$file" >> output/ad_ready.txt
             fi
           done
-      - name: Auto-Commit Results
+
+      - name: Auto-Save
         run: |
           git config --global user.name "Nexus Bot"
           git config --global user.email "bot@nexus.com"
           git add output/
-          git commit -m "Nexus: Automated Processing" || echo "No changes"
+          # استخدام --allow-empty لتجنب الأخطاء إذا لم يكن هناك تغيير
+          git commit -m "Nexus: Smart Update" || echo "No changes"
           git push
