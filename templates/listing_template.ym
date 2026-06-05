@@ -1,0 +1,9 @@
+# قالب بيانات العروض العقارية
+# سيستخدمه الـ Ads_Manager لمعالجة أي عرض جديد
+listing_template:
+  id: "ID_NUMBER"
+  title: "PROPERTY_TITLE"
+  location: "CITY_NAME"
+  price: "PRICE_AMOUNT"
+  type: "APARTMENT_VILLA_LAND"
+  status: "AVAILABLE"
