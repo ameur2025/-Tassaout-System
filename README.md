@@ -102,7 +102,24 @@ Le fichier `pages/admin.html` est l'interface centrale du système Tassaout. Il 
 - [ ] Module de notifications automatiques
 - [ ] Déploiement base de données clients
 
+------
+
+### **الهيكل التنظيمي الرقمي (System Architecture)**
+
+هذا المشروع يدار عبر نظام مكاتب متكامل يضمن تدفق المهام من الرؤية إلى التنفيذ:
+
+* **00_Bureau_Ameur:** الرؤية الاستراتيجية والأهداف العليا.
+* **01_Bureau_Claudia:** العصب المركزي لنظام نيكسوس (الربط والذكاء الاصطناعي).
+* **02_Bureau_DANA:** التنسيق الرقمي وهندسة الأوامر.
+* **04_Bureau_JeanPierre:** التصميم والهندسة المعمارية.
+* **05_Bureau_Claude:** التنفيذ الفني والبرمجة.
+* **06_Bureau_Jeanette:** التميز، الجودة، والتدقيق النهائي.
+
 ---
+
+### **منطق سير العمل (Workflow Logic)**
+
+تتدفق المهام من الرؤية (عامر) عبر العصب المركزي (كلوديا)، ويتم تنسيقها بواسطة (دانا)، لتُنفذ هندسياً وفنياً (جان بيير وكلود)، وتُختم بجودة فائقة (جانت).
 
 ## 📍 Localisation / الموقع
 
