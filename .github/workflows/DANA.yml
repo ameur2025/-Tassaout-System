@@ -9,22 +9,31 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
-      - name: DANA Executes with Gemini
+      - name: Process with Gemini
         run: |
           REQUEST=$(cat User.txt)
-          echo "DANA يتصل بـ Gemini لمعالجة: $REQUEST"
-          mkdir -p output
-          # هنا سنضع كود الاستعلام من Gemini
-          # ملاحظة: تأكد أنك خزنت GEMINI_API_KEY في Secrets
-          echo "النتيجة: [هنا سيظهر تحليل Gemini]" > output/status.txt
+          # الاتصال بـ Gemini
+          RESPONSE=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$GEMINI_API_KEY" \
+            -H 'Content-Type: application/json' \
+            -X POST \
+            -d "{ \"contents\": [{ \"parts\": [{ \"text\": \"$REQUEST\" }] }] }")
           
-      - name: Commit Action
+          # تنظيف النتيجة وحفظها
+          echo "$RESPONSE" > response.json
+          mkdir -p output
+          echo "طلب المشرف عامر: $REQUEST" > output/status.txt
+          echo "--- رد DANA (Gemini) ---" >> output/status.txt
+          echo "$RESPONSE" | grep -o '"text": "[^"]*' | cut -d'"' -f4 >> output/status.txt
+          
+      - name: Commit Result
         run: |
           git config user.name "DANA - System Writer"
           git config user.email "dana@tassaout.system"
           git add output/status.txt
-          git commit -m "DANA: Intelligence processed"
+          git commit -m "DANA: Gemini request completed"
           git push
