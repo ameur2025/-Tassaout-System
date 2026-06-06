@@ -8,6 +8,6 @@
 
 ### ⌨️ Command Input
 ```bash
-[Command]: 
-[Target_Bureau]: 
-[Parameters]:
+[Command]: إعداد الهيكل التنظيمي الأساسي لمكتب BrandArchitect
+[Target_Bureau]: 03_Bureau_BrandArchitect
+[Parameters]: إنشاء ملف المهمة الاستراتيجية للهوية البصرية
