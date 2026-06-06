@@ -5,35 +5,26 @@ on:
       - 'User.txt'
 
 jobs:
-  DANA_Process:
+  DANA_Intelligence:
     runs-on: ubuntu-latest
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-    permissions:
-      contents: write
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       
-      - name: DANA Intelligence Execution
+      - name: DANA Executes with Gemini
         run: |
-          # 1. قراءة أمر المشرف العام
-          ORDER=$(cat User.txt)
-          
-          # 2. قراءة محتوى ملف المرجع (Créer un gems)
-          CONTENT=$(cat "Créer un gems")
-          
-          # 3. معالجة الطلب (دمج الأمر مع المحتوى)
+          REQUEST=$(cat User.txt)
+          echo "DANA يتصل بـ Gemini لمعالجة: $REQUEST"
           mkdir -p output
-          echo "DANA يُنفذ الأمر: $ORDER" > output/status.txt
-          echo "--- المرجع المستخدم ---" >> output/status.txt
-          echo "$CONTENT" >> output/status.txt
-          echo "-----------------------" >> output/status.txt
-          echo "النتيجة: تم دمج المرجع في العملية بنجاح." >> output/status.txt
+          # هنا سنضع كود الاستعلام من Gemini
+          # ملاحظة: تأكد أنك خزنت GEMINI_API_KEY في Secrets
+          echo "النتيجة: [هنا سيظهر تحليل Gemini]" > output/status.txt
           
-      - name: Finalizing Commit
+      - name: Commit Action
         run: |
           git config user.name "DANA - System Writer"
           git config user.email "dana@tassaout.system"
           git add output/status.txt
-          git commit -m "DANA: Executed order using references"
+          git commit -m "DANA: Intelligence processed"
           git push
