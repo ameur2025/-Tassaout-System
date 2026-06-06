@@ -1,2 +1,2 @@
-
-احذف أي ملف ليس اسمه DANA.yml  اتبع الخيار رقم 7
+ احدف 
+page build and déployement 
