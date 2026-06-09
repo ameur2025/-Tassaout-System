@@ -2,31 +2,28 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>وكالة تساوت العقارية - النظام التلقائي</title>
+    <title>وكالة تساوت العقارية</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f9; }
         .lot-card { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
-    <h1>قائمة العقارات المتاحة - تحديث تلقائي</h1>
-    <div id="data-container">جاري تحميل البيانات من سجلات المكتب...</div>
+    <h1>قائمة العقارات - تحديث تلقائي</h1>
+    <div id="data-container">جاري تحميل البيانات...</div>
 
     <script>
-        // هذا السكربت سيقوم لاحقاً بسحب البيانات من GitHub مباشرة
-        const data = [
-            {type: "سكني", area: "115م", ref: "1050", price: "103,500"},
-            {type: "شبه تجاري", area: "100م", ref: "1085", price: "90,000"},
-            {type: "تجاري", area: "180م", ref: "730", price: "10,000,000"}
-        ];
-
-        const container = document.getElementById('data-container');
-        container.innerHTML = data.map(item => `
-            <div class="lot-card">
-                <h3>${item.type} - ${item.area}</h3>
-                <p>المرجع: ${item.ref} | السعر: ${item.price} درهم</p>
-            </div>
-        `).join('');
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('data-container');
+                container.innerHTML = data.map(item => `
+                    <div class="lot-card">
+                        <h3>${item.type} - ${item.area}</h3>
+                        <p>المرجع: ${item.ref} | السعر: ${item.price} درهم</p>
+                    </div>
+                `).join('');
+            });
     </script>
 </body>
 </html>
