@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <title>وكالة تساوت العقارية</title>
+    <meta charset="UTF-8">
+    <title>وكالة تساوت العقارية - النظام التلقائي</title>
     <style>
-        body { font-family: Arial; text-align: right; direction: rtl; padding: 20px; }
-        .lot { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .lot-card { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
-    <h1>مرحباً بكم في وكالة تساوت العقارية</h1>
-    <div id="content">
-        <div class="lot"><h3>سكني (115م)</h3><p>رقم 1050 - السعر: 103,500 درهم</p></div>
-        <div class="lot"><h3>شبه تجاري (100م)</h3><p>رقم 1085 - السعر: 90,000 درهم</p></div>
-        <div class="lot"><h3>تجاري (180م)</h3><p>رقم 730 - السعر: 10 مليون</p></div>
-    </div>
+    <h1>قائمة العقارات المتاحة - تحديث تلقائي</h1>
+    <div id="data-container">جاري تحميل البيانات من سجلات المكتب...</div>
+
+    <script>
+        // هذا السكربت سيقوم لاحقاً بسحب البيانات من GitHub مباشرة
+        const data = [
+            {type: "سكني", area: "115م", ref: "1050", price: "103,500"},
+            {type: "شبه تجاري", area: "100م", ref: "1085", price: "90,000"},
+            {type: "تجاري", area: "180م", ref: "730", price: "10,000,000"}
+        ];
+
+        const container = document.getElementById('data-container');
+        container.innerHTML = data.map(item => `
+            <div class="lot-card">
+                <h3>${item.type} - ${item.area}</h3>
+                <p>المرجع: ${item.ref} | السعر: ${item.price} درهم</p>
+            </div>
+        `).join('');
+    </script>
 </body>
 </html>
