@@ -1,7 +1,8 @@
-{{{
-  "agency": "Agendaimmobilière - Kelaa Sraghna",
+{
+  "agency": "Agence Immobilière Elhana Services",
   "reference": "Abd Absi",
   "offers": [
+    { "type": "كراء", "title": "منزل (الهناء - طابق 3)", "specs": "غرفتان وصالون", "price": "1800 درهم", "note": "مخصص لأستاذ" },
     { "type": "بيع", "title": "دار في الزاوية", "specs": "65متر، 3 واجهات، بيت وصالون ومطبخ وحمام، باب معزول", "price": "19 مليون" },
     { "type": "بيع", "title": "دار في الملاح", "specs": "56متر، سفلي و2 طوابق وكارصونيير في السطح", "price": "44 مليون" },
     { "type": "بيع", "title": "دار في جنان الخليفة", "specs": "120متر، واجهة واحدة، سفلية وطابقين، مسجلة ومحفظة", "price": "50 مليون" },
@@ -14,50 +15,17 @@
     { "type": "بيع", "title": "منزل تجاري - الريحان (3)", "specs": "96متر، مكازة و2 طوابق", "price": "150 مليون" },
     { "type": "بيع", "title": "شقة عصرية (طابق 1) - الهناء 2", "specs": "170متر، مشمولة بدعم 10 مليون", "price": "64 مليون" },
     { "type": "بيع", "title": "شقة عصرية (طابق 3) - الهناء 2", "specs": "90متر، 2 غرف وصالون ومطبخ وحمام، مشمولة بدعم 10 مليون", "price": "38 مليون" }
-  ]
-}
-  "agency_name": "Agence immobilière elhana services",
-  "last_updated": "2026-06-13",
-  "contact": {
-    "phone": "0691897126",
-    "signature": "Vision Tassaout : Intelligence Logique"
-  },
-  "offers": [
-    {
-      "id": "OFF-001",
-      "type": "كراء",
-      "description": "منزل بالطابق 3 - غرفتين وصالون",
-      "price": "1800 DH",
-      "target_audience": "أستاذ"
-    }
   ],
   "requests": [
-    { "type": "شراء", "target": "دار سكنية/تجاري", "budget": "<120M" },
-    { "type": "شراء", "target": "دار تجارية", "budget": "140M-160M" },
-    { "type": "شراء", "target": "دار في النور/الريحان/القلعة", "budget": "80M-90M" },
-    { "type": "شراء", "target": "دار سكنية", "budget": "~70M" },
-    { "type": "شراء", "target": "دار في الأحياء القديمة", "budget": "<30M" },
-    { "type": "شراء", "target": "شقق في الهناء", "budget": "44M-64M" },
-    { "type": "شراء", "target": "شقة (طابق 1/2) الهناء", "budget": "~40M" },
-    { "type": "شراء", "target": "بقعة تجارية في المنارة 1", "budget": "<40M" },
-    { "type": "كراء", "target": "محل (مكازة) لسناك سمك", "budget": "غير محدد" },
-    { "type": "شراء", "target": "هكتار فلاحي محفظ مع دار", "budget": "غير محدد" }
+    { "target": "دار سكنية أو شبه تجارية", "budget": "<120 مليون" },
+    { "target": "دار تجارية", "budget": "140-160 مليون" },
+    { "target": "دار (النور / الريحان / القلعة)", "budget": "80-90 مليون" },
+    { "target": "دار سكنية", "budget": "70 مليون" },
+    { "target": "دار (الأحياء القديمة)", "budget": "<30 مليون" },
+    { "target": "شقق في الهناء", "budget": "44-64 مليون" },
+    { "target": "شقة (ط1 أو ط2) في الهناء", "budget": "40 مليون" },
+    { "target": "بقعة تجارية (المنارة 1)", "budget": "<40 مليون" },
+    { "target": "مكازة (سناك سمك)", "budget": "طلب كراء" },
+    { "target": "هكتار فلاحي محفظ", "specs": "يحتوي على دار مبنية" }
   ]
-}
-  "agency_name": "المكتبة الرقمية الجامعة (Agendaimmobilière)",
-  "system_type": "Data_Core",
-  ...
-}
-  "last_updated": "2026-06-13",
-  "offices": [
-    {
-      "name": "Bureau DANA",
-      "projects": ["Ferme 5hectares", "Ferme à vendre"]
-    },
-    {
-      "name": "Bureau Ameur",
-      "projects": []
-    }
-  ],
-  "system_log": "Operational"
 }
