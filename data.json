@@ -1,20 +1,16 @@
-[
+{
+  "agency_name": "Agendaimmobilière",
+  "status": "Active",
+  "last_updated": "2026-06-13",
+  "offices": [
     {
-        "type": "سكني",
-        "area": "115م",
-        "ref": "1050",
-        "price": "103,500"
+      "name": "Bureau DANA",
+      "projects": ["Ferme 5hectares", "Ferme à vendre"]
     },
     {
-        "type": "شبه تجاري",
-        "area": "100م",
-        "ref": "1085",
-        "price": "90,000"
-    },
-    {
-        "type": "تجاري",
-        "area": "180م",
-        "ref": "730",
-        "price": "10,000,000"
+      "name": "Bureau Ameur",
+      "projects": []
     }
-]
+  ],
+  "system_log": "Operational"
+}
