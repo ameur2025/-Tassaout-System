@@ -1,4 +1,32 @@
-{
+{{
+  "agency_name": "Agence immobilière elhana services",
+  "last_updated": "2026-06-13",
+  "contact": {
+    "phone": "0691897126",
+    "signature": "Vision Tassaout : Intelligence Logique"
+  },
+  "offers": [
+    {
+      "id": "OFF-001",
+      "type": "كراء",
+      "description": "منزل بالطابق 3 - غرفتين وصالون",
+      "price": "1800 DH",
+      "target_audience": "أستاذ"
+    }
+  ],
+  "requests": [
+    { "type": "شراء", "target": "دار سكنية/تجاري", "budget": "<120M" },
+    { "type": "شراء", "target": "دار تجارية", "budget": "140M-160M" },
+    { "type": "شراء", "target": "دار في النور/الريحان/القلعة", "budget": "80M-90M" },
+    { "type": "شراء", "target": "دار سكنية", "budget": "~70M" },
+    { "type": "شراء", "target": "دار في الأحياء القديمة", "budget": "<30M" },
+    { "type": "شراء", "target": "شقق في الهناء", "budget": "44M-64M" },
+    { "type": "شراء", "target": "شقة (طابق 1/2) الهناء", "budget": "~40M" },
+    { "type": "شراء", "target": "بقعة تجارية في المنارة 1", "budget": "<40M" },
+    { "type": "كراء", "target": "محل (مكازة) لسناك سمك", "budget": "غير محدد" },
+    { "type": "شراء", "target": "هكتار فلاحي محفظ مع دار", "budget": "غير محدد" }
+  ]
+}
   "agency_name": "المكتبة الرقمية الجامعة (Agendaimmobilière)",
   "system_type": "Data_Core",
   ...
