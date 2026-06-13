@@ -1,6 +1,8 @@
 {
-  "agency_name": "Agendaimmobilière",
-  "status": "Active",
+  "agency_name": "المكتبة الرقمية الجامعة (Agendaimmobilière)",
+  "system_type": "Data_Core",
+  ...
+}
   "last_updated": "2026-06-13",
   "offices": [
     {
