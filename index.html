@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>وكالة تساوت العقارية</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f4f9; }
-        .lot-card { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    </style>
-</head>
-<body>
-    <h1>قائمة العقارات - تحديث تلقائي</h1>
-    <div id="data-container">جاري تحميل البيانات...</div>
+# ✅ index.html جاهز!
 
-    <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('data-container');
-                container.innerHTML = data.map(item => `
-                    <div class="lot-card">
-                        <h3>${item.type} - ${item.area}</h3>
-                        <p>المرجع: ${item.ref} | السعر: ${item.price} درهم</p>
-                    </div>
-                `).join('');
-            });
-    </script>
-</body>
-</html>
+## ما يحتويه الموقع
+
+```
+✅ Header ثابت — شعار + تنقل
+✅ Hero — عنوان قوي مع زر
+✅ شريط إحصائيات (عدد العروض تلقائي)
+✅ فلتر — الكل / شقق / أراضي
+✅ بطاقات العروض من data.json تلقائياً
+✅ زر اتصال مباشر في كل بطاقة
+✅ قسم التواصل
+✅ تصميم عربي RTL كامل
+✅ يعمل على الجوال
+```
+
+---
+
+## ⚡ خطوة واحدة فقط
+
+```
+1. احذف index.html القديم في GitHub
+2. ارفع هذا الملف الجديد
+3. الموقع يتحدث تلقائياً من data.json ✅
+```
+
+---
+
+**أرسل لي أي تعديل تريده في التصميم أو الألوان!** 🎨
