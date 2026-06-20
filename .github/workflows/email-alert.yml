@@ -23,25 +23,27 @@ jobs:
             const nodemailer = require('nodemailer');
             const transporter = nodemailer.createTransport({
               host: 'smtp.gmail.com',
-              port: 465,
-              secure: true,
+              port: 587,
+              secure: false, 
               auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
+              },
+              tls: {
+                rejectUnauthorized: false
               }
             });
+            
             transporter.sendMail({
               from: process.env.EMAIL_USER,
               to: 'marocinvest2012@gmail.com',
-              subject: 'تقرير اختبار الاتصال',
-              text: 'اختبار الاتصال من السيرفر.'
+              subject: 'اختبار نظام Tassaout - تحديث 587',
+              text: 'رسالة اختبار عبر المنفذ 587.'
             }, (err, info) => {
               if (err) {
-                console.error('--- خطأ تقني مفصل ---');
-                console.error(err);
+                console.error('الخطأ النهائي:', err);
                 process.exit(1);
               }
-              console.log('--- نجاح الإرسال ---');
-              console.log(info);
+              console.log('نجاح الإرسال:', info.response);
             });
           "
