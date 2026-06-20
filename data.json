@@ -1,4 +1,17 @@
-{[{
+{[{[
+  {
+    "type": "Lot",
+    "zone": "Menara 3",
+    "surface": "190",
+    "price": "940000"
+  },
+  {
+    "type": "Lot",
+    "zone": "El Badr 1",
+    "surface": "288",
+    "price": "880000"
+  }
+]
   "agency": "تساوت العقارية",
   "city": "قلعة السراغنة",
   "last_update": "2026-06-14",
