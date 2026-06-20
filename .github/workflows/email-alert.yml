@@ -5,45 +5,17 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
-      - name: Send Mail
+      - name: Send Mail via Brevo API
         env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          BREVO_API_KEY: ${{ secrets.EMAIL_PASS }}
         run: |
-          npm install nodemailer
-          node -e "
-            const nodemailer = require('nodemailer');
-            const transporter = nodemailer.createTransport({
-              host: 'smtp.gmail.com',
-              port: 587,
-              secure: false, 
-              auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-              },
-              tls: {
-                rejectUnauthorized: false
-              }
-            });
-            
-            transporter.sendMail({
-              from: process.env.EMAIL_USER,
-              to: 'marocinvest2012@gmail.com',
-              subject: 'اختبار نظام Tassaout - تحديث 587',
-              text: 'رسالة اختبار عبر المنفذ 587.'
-            }, (err, info) => {
-              if (err) {
-                console.error('الخطأ النهائي:', err);
-                process.exit(1);
-              }
-              console.log('نجاح الإرسال:', info.response);
-            });
-          "
+          curl -X POST https://api.brevo.com/v3/smtp/email \
+            -H "accept: application/json" \
+            -H "api-key: $BREVO_API_KEY" \
+            -H "content-type: application/json" \
+            -d '{
+              "sender": {"email": "marocinvest2012@gmail.com", "name": "Tassaout Agency"},
+              "to": [{"email": "marocinvest2012@gmail.com", "name": "Receiver"}],
+              "subject": "نظام Alpha Core: نجاح الاتصال النهائي",
+              "htmlContent": "<html><body><h1>سيدي الرئيس</h1><p>تم الإرسال بنجاح تام عبر Brevo API!</p></body></html>"
+            }'
