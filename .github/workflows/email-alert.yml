@@ -4,14 +4,14 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Email Notification
+      - name: Send Email
         uses: dawiddr/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{secrets.EMAIL_USER}}
-          password: ${{secrets.EMAIL_PASSWORD}}
-          subject: "تقرير عمليات: Alpha Core Nexus"
-          body: "سيدي الرئيس، تم تحديث النظام بنجاح. الجسر البرمجي يعمل الآن."
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "تنبيه من نظام Tassaout"
+          body: "سيدي الرئيس، تم استلام تحديث جديد في النظام بنجاح."
           to: marocinvest2012@gmail.com
           from: Tassaout-System
