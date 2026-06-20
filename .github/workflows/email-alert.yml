@@ -7,7 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Send Email
-        uses: dawiddr/action-send-mail@v3.1.0
+        uses: dawiddr/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
