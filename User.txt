@@ -1,54 +1,25 @@
-{
-  "agency": "تساوت العقارية",
-  "city": "قلعة السراغنة",
-  "last_update": "2026-06-14",
-  "contact": "0691897126",
-  "total_listings": 3,
-  "listings": [
-    {
-      "id": "TASS-001",
-      "residence": "الهناء 2",
-      "type": "شقة عصرية",
-      "status": "للبيع",
-      "floor": 1,
-      "area_m2": 170,
-      "roof_m2": 0,
-      "total_m2": 170,
-      "price_DH": 640000,
-      "price_display": "640,000 درهم",
-      "contact": "0691897126",
-      "date_added": "2026-06-14",
-      "available": true
-    },
-    {
-      "id": "TASS-002",
-      "residence": "الهناء 2",
-      "type": "شقة عصرية",
-      "status": "للبيع",
-      "floor": 3,
-      "area_m2": 90,
-      "roof_m2": 0,
-      "total_m2": 90,
-      "price_DH": 380000,
-      "price_display": "380,000 درهم",
-      "contact": "0691897126",
-      "date_added": "2026-06-14",
-      "available": true
-    },
-    {
-      "id": "TASS-003",
-      "residence": "السلام",
-      "type": "شقة مع سطح",
-      "status": "للبيع",
-      "floor": "سطح",
-      "area_m2": 126,
-      "roof_m2": 65,
-      "total_m2": 191,
-      "price_DH": 600000,
-      "price_display": "600,000 درهم",
-      "contact": "0691897126",
-      "date_added": "2026-06-14",
-      "available": true
-    }
-  ]
-}
+# SYSTEM CONFIGURATION PROFILE
+# ----------------------------
+[IDENTITY]
+USER_ID: ameur2025
+ROLE: Root_Administrator
+SYSTEM_NAME: Alpha Core Nexus
+SECURITY_MODE: Sovereign
+
+[OPERATIONAL_PREFERENCES]
+COMMUNICATION_STYLE: Professional, Strategic, Engineering-Oriented
+REPORTING_LANGUAGE: Arabic
+STORAGE_STRATEGY: Decentralized & Sovereign (GitHub-backed)
+SYNC_PRIORITY: High (Studio Digital <-> Nexus <-> Library)
+
+[STRATEGIC_OBJECTIVES]
+1. Digital Sovereignty: Ensure full control over all assets.
+2. Automation: Minimize manual operations in real estate management.
+3. Archiving: Maintain an immutable record of all projects in the Unified Library.
+
+[SYSTEM_AGENT_ACCESS]
+- Architect_Agent: Active
+- Engineering_Agent: Active
+- Archivist_Agent: Active
+
+# DO NOT MODIFY WITHOUT ROOT AUTHORIZATION
