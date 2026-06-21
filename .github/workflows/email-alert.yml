@@ -5,17 +5,16 @@ jobs:
   broadcast-offer:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Marketing Email via Brevo API
+      - name: Send Email via Brevo
         env:
           BREVO_API_KEY: ${{ secrets.EMAIL_PASS }}
         run: |
           curl -X POST https://api.brevo.com/v3/smtp/email \
-            -H "accept: application/json" \
             -H "api-key: $BREVO_API_KEY" \
-            -H "content-type: application/json" \
+            -H "Content-Type: application/json" \
             -d '{
-              "sender": {"email": "marocinvest2012@gmail.com", "name": "Tassaout Agency"},
-              "to": [{"email": "marocinvest2012@gmail.com", "name": "Receiver"}],
-              "subject": "🔵 عروض حصرية: حي الريحان - قلعة السراغنة",
-              "htmlContent": "<html><body><h1>عروض حصرية للبيع بقلعة السراغنة - حي الريحان</h1><p>نضع بين أيديكم خيارات استثمارية وسكنية مميزة:</p><ul><li><b>منازل تجارية (96م²):</b> 80 - 150 مليون سنتيم</li><li><b>بقع تجارية 135م² (R+3):</b> 56 مليون سنتيم</li><li><b>بقعة 80م² (2 واجهات):</b> 48 مليون سنتيم</li><li><b>بقعة 72م² (2 واجهات):</b> 45 مليون سنتيم</li></ul><p><b>الموقع:</b> حي الريحان، قلعة السراغنة<br><b>للاستفسار:</b> 0691897126</p></body></html>"
+              "sender": {"name": "Tassaout Agency", "email": "marocinvest2012@gmail.com"},
+              "to": [{"email": "marocinvest2012@gmail.com"}],
+              "subject": "🔵 عرض عقاري حصري: حي الريحان",
+              "htmlContent": "<h1>عروض حي الريحان</h1><p>تم تفعيل النظام بنجاح.</p>"
             }'
