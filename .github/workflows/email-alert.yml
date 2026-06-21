@@ -1,11 +1,11 @@
-name: Tassaout Agency Notifications
+name: Tassaout Agency Marketing Broadcast
 on: [push]
 
 jobs:
-  send-email:
+  broadcast-offer:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Mail via Brevo API
+      - name: Send Marketing Email via Brevo API
         env:
           BREVO_API_KEY: ${{ secrets.EMAIL_PASS }}
         run: |
@@ -16,6 +16,6 @@ jobs:
             -d '{
               "sender": {"email": "marocinvest2012@gmail.com", "name": "Tassaout Agency"},
               "to": [{"email": "marocinvest2012@gmail.com", "name": "Receiver"}],
-              "subject": "نظام Alpha Core: نجاح الاتصال النهائي",
-              "htmlContent": "<html><body><h1>سيدي الرئيس</h1><p>تم الإرسال بنجاح تام عبر Brevo API!</p></body></html>"
+              "subject": "🔵 عروض حصرية: حي الريحان - قلعة السراغنة",
+              "htmlContent": "<html><body><h1>عروض حصرية للبيع بقلعة السراغنة - حي الريحان</h1><p>نضع بين أيديكم خيارات استثمارية وسكنية مميزة:</p><ul><li><b>منازل تجارية (96م²):</b> 80 - 150 مليون سنتيم</li><li><b>بقع تجارية 135م² (R+3):</b> 56 مليون سنتيم</li><li><b>بقعة 80م² (2 واجهات):</b> 48 مليون سنتيم</li><li><b>بقعة 72م² (2 واجهات):</b> 45 مليون سنتيم</li></ul><p><b>الموقع:</b> حي الريحان، قلعة السراغنة<br><b>للاستفسار:</b> 0691897126</p></body></html>"
             }'
