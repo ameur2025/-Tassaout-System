@@ -1,4 +1,29 @@
-{{
+{
+  "project_name": "Tassaout_Identity_Hub",
+  "operational_director": "ameur2025",
+  "axiom_core_status": "ACTIVE",
+  "assets": {
+    "real_estate": {
+      "location": "Kelaa_des_Sraghna",
+      "type": "Agricultural_&_Residential",
+      "status": "Ready_for_Marketing"
+    },
+    "terroir_products": {
+      "sector": "Cooperatives",
+      "value_proposition": "Authenticity_and_Originality"
+    }
+  },
+  "contact_channels": {
+    "whatsapp": "https://wa.me/+212691897126",
+    "youtube": "https://www.youtube.com/@studiotassaout",
+    "email": "marocinvest2012@gmail.com"
+  },
+  "system_config": {
+    "protocol": "Alpha_High",
+    "intelligence": "Capsule_Strategy",
+    "privacy_mode": "Encrypted"
+  }
+}{
   "NEXUS_MANIFESTO_V4": {
     "SYSTEM_IDENTITY": {
       "NAME": "Alpha Core Nexus",
