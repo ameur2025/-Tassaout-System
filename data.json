@@ -1,4 +1,21 @@
-{
+{{
+  "agent_id": "Tassaout_Smart_Agent_01",
+  "status": "OPERATIONAL",
+  "knowledge_base": {
+    "properties": [
+      {"id": "RE-01", "type": "Apartment", "location": "Menara 3", "price": "33M", "status": "Available"},
+      {"id": "RE-02", "type": "Plot", "location": "Hoda 2", "price": "19.5M", "status": "Available"}
+    ],
+    "client_requests": [
+      {"client_id": "C-01", "budget": "40M", "preference": "Cash"}
+    ]
+  },
+  "operations_loop": {
+    "action": "Match_Property_To_Client",
+    "trigger": "New_Client_Request",
+    "output_protocol": "Professional_Tone"
+  }
+}
   "project_name": "Tassaout_Identity_Hub",
   "operational_director": "ameur2025",
   "axiom_core_status": "ACTIVE",
